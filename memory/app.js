@@ -27,29 +27,20 @@ document.addEventListener('DOMContentLoaded', () => {
             };
         }
     }
-    const imageNames = [
-        'cheeseburger',
-        'fries',
-        'hotdog',
-        'ice-cream',
-        'milkshake',
-        'pizza',
-    ];
-    let cardArray = imageNames.map((name) => ({ name: name, img: `images/${name}.png` }));
-    cardArray = [...cardArray, ...cardArray];
     const createBoard = () => {
+        const grid = document.querySelector('.grid');
         for (let i = 0; i < cardArray.length; i++) {
             let card = document.createElement('img');
             card.setAttribute('data-id', i.toString());
             card.setAttribute('draggable', "false");
             grid?.appendChild(card);
         }
+        startGame();
     };
     const startGame = () => {
         cardArray.sort(() => 0.5 - Math.random());
         cardsWon = 0;
-        if (resultDisplay)
-            resultDisplay.textContent = `${cardsWon} / ${cardArray.length / 2}`;
+        updateScore();
         cardsChosen.clear();
         const images = document.querySelectorAll("img");
         images.forEach((node) => {
@@ -60,12 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
             node.addEventListener('click', flipCard);
         });
     };
-    const grid = document.querySelector('.grid');
-    const resultDisplay = document.querySelector('#current-score');
-    const restartButton = document.querySelector('#reset-button');
-    restartButton?.addEventListener('click', startGame);
-    const cardsChosen = new CardSelector();
-    let cardsWon = 0;
+    const updateScore = () => {
+        if (resultDisplay)
+            resultDisplay.textContent = `${cardsWon} / ${cardArray.length / 2}`;
+    };
     const checkForMatch = () => {
         let cards = document.querySelectorAll('img');
         const { first, second } = cardsChosen;
@@ -76,14 +65,13 @@ document.addEventListener('DOMContentLoaded', () => {
             cards[first.id].removeEventListener('click', flipCard);
             cards[second.id].removeEventListener('click', flipCard);
             cardsWon++;
+            updateScore();
         }
         else {
             cards[first.id].setAttribute('src', 'images/blank.png');
             cards[second.id].setAttribute('src', 'images/blank.png');
         }
         cardsChosen.clear();
-        if (resultDisplay)
-            resultDisplay.textContent = `${cardsWon} / ${cardArray.length / 2}`;
         if (cardsWon === cardArray.length / 2) {
             if (resultDisplay)
                 resultDisplay.textContent = 'You Won!';
@@ -100,6 +88,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     };
+    const imageNames = [
+        'cheeseburger',
+        'fries',
+        'hotdog',
+        'ice-cream',
+        'milkshake',
+        'pizza',
+    ];
+    let cardArray = imageNames.map((name) => ({ name: name, img: `images/${name}.png` }));
+    cardArray = [...cardArray, ...cardArray];
+    const resultDisplay = document.querySelector('#current-score');
+    const restartButton = document.querySelector('#reset-button');
+    restartButton?.addEventListener('click', startGame);
+    const cardsChosen = new CardSelector();
+    let cardsWon = 0;
     createBoard();
-    startGame();
 });
