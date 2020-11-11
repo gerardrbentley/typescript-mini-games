@@ -52,8 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
     const updateScore = () => {
-        if (resultDisplay)
+        if (resultDisplay) {
             resultDisplay.textContent = `${cardsWon} / ${cardArray.length / 2}`;
+        }
     };
     const checkForMatch = () => {
         let cards = document.querySelectorAll('img');

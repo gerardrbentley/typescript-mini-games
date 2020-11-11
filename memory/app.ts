@@ -65,7 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const updateScore: (() => void) = () => {
-        if (resultDisplay) resultDisplay.textContent = `${ cardsWon } / ${ cardArray.length / 2 }`;
+        if (resultDisplay) {
+            resultDisplay.textContent = `${ cardsWon } / ${ cardArray.length / 2 }`;
+        }
     };
 
     const checkForMatch: (() => void) = () => {
