@@ -121,3 +121,20 @@ http-server
 - Uses `setInterval()` to cause the mole to change location every 0.5 seconds and update the countdown timer every 1 second
 - Uses `clearInterval()` to stop or reset the
 - Uses `classList` to visually present the mole (coded as a css class `mole` that affects the image background of a given square, which are HTML div's)
+
+# Connect Four
+
+## Overview
+
+- A 6x7 (Rows x Cols) grid of empty squares when the game is started
+- Two players alternate taking turns placing a chip of their own color
+- Players can only place chips in the lowest available row in a given column (i.e. the bottom row if no chips are in that row, the second from the bottom if there is one chip in the row already)
+- A player wins when they have four of their colored chips in a vertical, horizontal, or diagonal line
+- If all spaces on the board are taken and neither player has 4 in a row, the game is a draw
+- The board can be reset at any time and control passed to player 1 by hitting the reset button
+
+## Implementation Notes
+
+- Uses a 1-dimensional Array to access the 42 grid squares from top left to bottom right (i.e. (0,0) is index 0 and (6,7) is index 41)
+- Uses a hidden row of HTML div's below the bottom row to simplify the start condition of choosable rows
+- After each valid selection checks if the board has a winner or is a draw
