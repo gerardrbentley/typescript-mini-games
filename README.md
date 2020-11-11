@@ -1,4 +1,4 @@
-Live preview available at tsgames.gerardbentley.com (Hosted with Github pages + Google domains)
+Live preview available at [tsgames.gerardbentley.com](https://tsgames.gerardbentley.com) (Hosted with Github pages + Google domains)
 
 # Resources
 
@@ -138,3 +138,18 @@ http-server
 - Uses a 1-dimensional Array to access the 42 grid squares from top left to bottom right (i.e. (0,0) is index 0 and (6,7) is index 41)
 - Uses a hidden row of HTML div's below the bottom row to simplify the start condition of choosable rows
 - After each valid selection checks if the board has a winner or is a draw
+
+# Snake
+
+## Overview
+
+- A grid of empty squares represents the play area, at the start a snake is placed in a random location and is one square long
+- The player controls the snake using arrow keys to change its direction
+- At a set interval a piece of food will appear at a random location in the grid
+- If the snake moves onto the same square as the food it will grow by one square, adding a point for the user
+- If the snake tries to move onto a square already covered by its tail or off the grid, the game is over
+- If the snake covers every square on the grid the player wins (difficult.)
+
+## Implemenation Notes
+
+- Uses keycodes to identify which arrow key is pressed if any
