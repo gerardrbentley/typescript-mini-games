@@ -1,3 +1,10 @@
+Live preview available at tsgames.gerardbentley.com (Hosted with Github pages + Google domains)
+
+# Resources
+
+- Starting inspiration: [FreeCodeCamp.org Javascript Games Video](https://www.youtube.com/watch?v=lhNdUVh3qCc&t=688s)
+- Github Corner SVG link: [By Tim Holman](https://github.com/tholman/github-corners)
+
 # Project Dev / Running
 
 ## Dependencies
@@ -72,8 +79,6 @@ http-server
 
 # Grid Based Games
 
-Starting inspiration: [FreeCodeCamp.org Javascript Games Video](https://www.youtube.com/watch?v=lhNdUVh3qCc&t=688s)
-
 # Memory Game
 
 ## Overview
@@ -99,3 +104,20 @@ Starting inspiration: [FreeCodeCamp.org Javascript Games Video](https://www.yout
 - Uses `setAttribute()` to assign each image a unique id
 - Uses `appendChild()` to set the images within the game board grid
 - Uses `addEventListener()` and `removeEventListener()` to dynamically enable and disable the ability to reveal an image by clicking it
+
+# Whack-A-Mole
+
+## Overview
+
+- A 3x3 grid of squares are blank until the game is started
+- Once started, the mole will appear on a random square every 0.5 seconds, then dissappear (it may 'revisit' the same square multiple times in a row by `1/9 ^ NUM_TIMES` odds, visually not moving at all)
+- If the player clicks on the mole's current square they get a point
+- Clicking on the mole's current square multiple times will award no further points (unless it 'revists' the same square)
+- Once 60 seconds have elapsed, the mole no longer appears and the game is over
+- The game can be restarted at any time by clicking the start / restart button
+
+## Implementation Notes
+
+- Uses `setInterval()` to cause the mole to change location every 0.5 seconds and update the countdown timer every 1 second
+- Uses `clearInterval()` to stop or reset the
+- Uses `classList` to visually present the mole (coded as a css class `mole` that affects the image background of a given square, which are HTML div's)
