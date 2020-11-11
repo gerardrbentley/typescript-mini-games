@@ -152,4 +152,6 @@ http-server
 
 ## Implemenation Notes
 
-- Uses keycodes to identify which arrow key is pressed if any
+- Uses KeyboardEvent's code to identify which arrow key is pressed if any
+- Uses 1-dimensional Array to index grid locations and calculate the location of where the snake moves next based on arrow key direction
+- Selects random food location from indices that are not part of the snake
