@@ -54,23 +54,23 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('ERROR SNAKE', currentSnake);
             throw new Error("Current snake has no array elements to pop");
         }
-        allSquares[tail].classList.remove('snake');
         currentSnake.splice(0, 0, (currentSnake[0] + direction));
         if (allSquares[currentSnake[0]].classList.contains('food')) {
             allSquares[currentSnake[0]].classList.remove('food');
             allSquares[tail].classList.add('snake');
             currentSnake.push(tail);
             foodIndex = spawnFood();
+            clearInterval(interval);
             if (foodIndex !== -1) {
                 score++;
                 if (scoreDisplay) {
                     scoreDisplay.textContent = score.toString();
                 }
-                clearInterval(interval);
                 intervalTime = intervalTime * speed;
                 interval = setInterval(moveSnake, intervalTime);
             }
         }
+        allSquares[tail].classList.remove('snake');
         allSquares[currentSnake[0]].classList.add('snake');
     };
     const spawnFood = () => {
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             direction = -1;
         }
         else if (event.code === 'ArrowDown' && direction !== -rows) {
-            direction = +rows;
+            direction = rows;
         }
     };
     document.addEventListener('keydown', control);
