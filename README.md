@@ -166,3 +166,19 @@ http-server
 - If the player destroys all invaders, the game is won
 
 ## Implementation Notes
+
+# Frogger
+
+## Overview
+
+- The game grid contains some 'ground' blocks and some 'water' blocks
+- The player frogger starts at the bottom starting block
+- The player has 20 seconds to reach the ending block to win
+- 'car' blocks move left and right across the screen on ground sections. If the player and a car block overlap, the player loses
+- 'log' blocks move left and right across the screen on water sections. Stepping on logs allows the player to advance across water, stepping on water will make the player lose
+
+## Implementation Notes
+
+- Similar to snake and space invaders, collision is handled by checking if a grid square has CSS classes for both the frog and a car, both the frog and water, or both the frog and the end goal
+- Pause function suspends keyboard control and timer. Timer is resumed by pressing the button again.
+- Arrow Keys trigger `preventDefault()` to stop the window from scrolling with arrow keys while playing.
