@@ -155,3 +155,14 @@ http-server
 - Uses KeyboardEvent's code to identify which arrow key is pressed if any
 - Uses 1-dimensional Array to index grid locations and calculate the location of where the snake moves next based on arrow key direction
 - Selects random food location from indices that are not part of the snake
+
+# Space Invaders
+
+## Overview
+
+- A 15 x 15 Grid starts the game filled at the top left with a set of 30 invader aliens in rows of 10 and a player spaceship at the bottom
+- As time passes the invaders advance towards the player ship, if they make contact the game is lost
+- The player can shoot lasers vertically from their current x position and move left and right. If a laser hits an invader that invader disappears
+- If the player destroys all invaders, the game is won
+
+## Implementation Notes
